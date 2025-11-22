@@ -1,0 +1,107 @@
+/* --- Theme Variables --- */
+:root {
+--bg: #f7f7f7;
+--text: #252525;
+--primary: #639fff;
+--muted: rgba(37,37,37,0.6);
+--modal-bg: #ffffff;
+--input-bg: #ffffff;
+--scroll-thumb: rgba(99,159,255,0.4);
+
+/* Default font settings */
+font-synthesis: none;
+text-rendering: optimizeLegibility;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+.dark-theme {
+--bg: #1f2937;
+--text: #f7f7f7;
+--primary: #3b82f6;
+--muted: rgba(247,247,247,0.7);
+--modal-bg: #111827;
+--input-bg: #1f2937;
+--scroll-thumb: rgba(59,130,246,0.4);
+}
+
+/* --- Global Styles --- */
+html, #root {
+height: 100%;
+width: 100%;
+margin: 0;
+padding: 0;
+}
+
+body {
+/* Layout */
+width: 100%;
+min-height: 100vh;
+margin: 0;
+padding: 0;
+display: flex;
+flex-direction: column;
+
+/* Theme */
+background: var(--bg);
+color: var(--text);
+font-family: 'Kanit', sans-serif;
+transition: background 0.3s, color 0.3s;
+}
+
+/* --- Scrollbar --- */
+main#todo-list {
+max-height: 65vh;
+overflow-y: auto;
+scrollbar-width: thin;
+scrollbar-color: var(--scroll-thumb) transparent;
+}
+main#todo-list::-webkit-scrollbar {
+width: 6px;
+}
+main#todo-list::-webkit-scrollbar-thumb {
+background: var(--scroll-thumb);
+border-radius: 6px;
+}
+main#todo-list::-webkit-scrollbar-track {
+background: transparent;
+}
+
+/* --- Utility Classes --- */
+.border-primary { border-color: var(--primary); }
+.bg-primary { background-color: var(--primary); }
+.text-primary { color: var(--primary); }
+
+/* --- Inputs & Selects --- */
+select, input {
+background-color: var(--input-bg);
+color: var(--text);
+transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+select:focus, input:focus {
+outline: none;
+border-color: var(--primary);
+}
+
+/* --- Toast Message --- */
+#toast {
+position: fixed;
+bottom: 24px;
+left: 50%;
+transform: translateX(-50%);
+background: var(--primary);
+color: white;
+padding: 10px 20px;
+border-radius: 8px;
+font-family: 'Inter', sans-serif;
+font-size: 15px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.3s ease;
+z-index: 9999;
+}
+#toast.show {
+opacity: 1;
+pointer-events: auto;
+}
